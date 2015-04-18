@@ -1,2 +1,2 @@
 module.exports =
-  Component: require('./component.coffee')
+  ZlatanSays: require('./zlatan_says.coffee')
