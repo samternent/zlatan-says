@@ -6,11 +6,11 @@ app.get('/', function(req, res) {
 });
 
 app.get('/script', function(req, res) {
-  res.sendfile("./dist/build_app.js");
+  res.sendfile("dist/build_app.js");
 });
 
 app.get('/style', function(req, res) {
-  res.sendfile("./dist/build_app.css");
+  res.sendfile("dist/build_app.css");
 });
 
 
