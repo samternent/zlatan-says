@@ -1,0 +1,31 @@
+React = require('react/addons')
+
+module.exports =
+  # Block
+  ul:         React.DOM.ul
+  li:         React.DOM.li
+  div:        React.DOM.div
+  p:          React.DOM.p
+  section:    React.DOM.section
+  header:     React.DOM.header
+  article:    React.DOM.article
+  aside:      React.DOM.aside
+  form:       React.DOM.form
+  h1:         React.DOM.h1
+  h2:         React.DOM.h2
+  h3:         React.DOM.h3
+  h4:         React.DOM.h4
+  h5:         React.DOM.h5
+  # inline
+  a:          React.DOM.a
+  b:          React.DOM.b
+  i:          React.DOM.i
+  span:       React.DOM.span
+  img:        React.DOM.img
+  small:      React.DOM.small
+  strong:     React.DOM.strong
+  label:      React.DOM.label
+  input:      React.DOM.input
+  button:     React.DOM.button
+  textarea:   React.DOM.textarea
+  fieldset:   React.DOM.fieldset
