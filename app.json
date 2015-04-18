@@ -1,0 +1,7 @@
+{
+  "name": "Zlatan Says",
+  "description": "The wonderful words of zlatan",
+  "repository": "https://github.com/samternent/zlatan-says",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static"]
+}
