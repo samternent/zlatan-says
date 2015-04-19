@@ -28,7 +28,7 @@ SocialButton =
                     buttonType  : React.PropTypes.string
                     buttonText  : React.PropTypes.string
                     title       : React.PropTypes.string
-                    link       : React.PropTypes.string
+                    link        : React.PropTypes.string
                   }
   mixins        : []
 
@@ -66,10 +66,10 @@ SocialButton =
 
   _handle_facebook: ->
     url = []
-    url.push "&link=#{encodeURIComponent(@props.link)}" if @props.link
-    url.push "&name=#{@props.title}" if @props.title
-    url.push "&caption=#{@props.caption}" if @props.caption
-    url.push "&picture=#{encodeURIComponent(@props.picture)}" if @props.picture
+    url.push "&link=#{encodeURIComponent(@props.link)}"                 if @props.link
+    url.push "&name=#{@props.title}"                                    if @props.title
+    url.push "&caption=#{@props.caption}"                               if @props.caption
+    url.push "&picture=#{encodeURIComponent(@props.picture)}"           if @props.picture
     url.push "&redirect_uri=#{encodeURIComponent(@props.redirect_uri)}" if @props.redirect_uri
     url.join ""
 
@@ -77,7 +77,7 @@ SocialButton =
     window.open url, 650, 350, "facebook_share"
 
   _handle_twitter: ->
-    url = "https://twitter.com/intent/tweet?text=#{encodeURIComponent(@props.title)}&url=#{@props.link}"
+    url = "https://twitter.com/intent/tweet?text=#{encodeURIComponent(@props.title)}&url=#{@props.link}&hashtags=#{@props.hashtags}"
     window.open url, 650, 350, "twitter_share"
 
 

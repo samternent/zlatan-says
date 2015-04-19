@@ -21863,7 +21863,7 @@ SocialButton = {
   },
   _handle_twitter: function() {
     var url;
-    url = "https://twitter.com/intent/tweet?text=" + (encodeURIComponent(this.props.title)) + "&url=" + this.props.link;
+    url = "https://twitter.com/intent/tweet?text=" + (encodeURIComponent(this.props.title)) + "&url=" + this.props.link + "&hashtags=" + this.props.hashtags;
     return window.open(url, 650, 350, "twitter_share");
   },
   render: function() {
@@ -21905,18 +21905,28 @@ ZlatanSays = {
     var rand;
     rand = Math.floor(Math.random() * Quotes.length);
     if (this.state && rand === this.state.quote) {
-      return this.getQuote();
+      this.getQuote();
     } else {
-      return this.setState({
+      this.setState({
         quote: rand
       });
     }
+    return window.location.hash = rand;
   },
-  componentWillMount: function() {},
+  getQueryString: function(name) {},
+  componentWillMount: function() {
+    var id;
+    if (window.location.hash) {
+      id = parseInt(window.location.hash.substr(1));
+      if (!isNaN(id)) {
+        return this.setState({
+          quote: id
+        });
+      }
+    }
+  },
   componentWillReceiveProps: function() {},
-  componentDidMount: function() {
-    return this.getQuote();
-  },
+  componentDidMount: function() {},
   componentWillUnmount: function() {},
   _handleClick: function(e) {
     return this.getQuote();
@@ -21934,12 +21944,16 @@ ZlatanSays = {
       buttonType: 'facebook',
       buttonText: 'Share',
       title: Quotes[this.state.quote].quote,
-      link: 'sa'
+      link: 'https://zlatan-says.herokuapp.com/',
+      caption: '',
+      picture: '',
+      redirect_uri: 'https://zlatan-says.herokuapp.com/'
     }), SocialButton({
       buttonType: 'twitter',
       buttonText: 'Tweet',
       title: Quotes[this.state.quote].quote,
-      link: 'sa'
+      link: 'https://zlatan-says.herokuapp.com/',
+      hashtags: 'ZlatanSays'
     }));
   }
 };

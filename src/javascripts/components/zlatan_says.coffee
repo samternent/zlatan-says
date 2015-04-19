@@ -48,16 +48,22 @@ ZlatanSays =
     else
       @setState quote: rand
 
+    window.location.hash = rand
+
+  getQueryString: (name) ->
 
   # --------------------------------------------
   # Lifecycle Methods
   # --------------------------------------------
 
   componentWillMount: ->          # add event listeners (Flux Store, WebSocket, document)@
+    # I'm about to get the query string!
+    if window.location.hash
+      id = parseInt window.location.hash.substr(1);
+      @setState quote: id if !isNaN(id)
+
   componentWillReceiveProps: ->   # change state based on props change
   componentDidMount: ->           # data request (XHR)
-    @getQuote()
-
   componentWillUnmount: ->        # remove event listeners
 
 
@@ -82,8 +88,24 @@ ZlatanSays =
 
       DOM.h1({ onClick: @_handleClick }, 'zlatan says' )
       DOM.div({ className: 'quote' }, Quotes[ @state.quote ].quote )
-      SocialButton({ buttonType: 'facebook', buttonText: 'Share', title: Quotes[ @state.quote ].quote, link: 'sa' })
-      SocialButton({ buttonType: 'twitter', buttonText: 'Tweet', title: Quotes[ @state.quote ].quote, link: 'sa' })
+
+      SocialButton({
+        buttonType    : 'facebook'
+        buttonText    : 'Share'
+        title         : Quotes[ @state.quote ].quote
+        link          : 'https://zlatan-says.herokuapp.com/'
+        caption       : ''
+        picture       : ''
+        redirect_uri  : 'https://zlatan-says.herokuapp.com/'
+      })
+
+      SocialButton({
+        buttonType    : 'twitter'
+        buttonText    : 'Tweet'
+        title         : Quotes[ @state.quote ].quote
+        link          : 'https://zlatan-says.herokuapp.com/'
+        hashtags      : 'ZlatanSays'
+      })
     )
 
 
