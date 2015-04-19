@@ -87,6 +87,7 @@ ZlatanSays =
       DOM.div({ className: 'question' }, Quotes[ @state.quote ].question )
 
       DOM.h1({ className: 'title', onClick: @_handleClick }, 'zlatan says' )
+      DOM.div({ className: 'click', onClick: @_handleClick }, 'click for a quote' )
       DOM.div({ className: 'quote' }, Quotes[ @state.quote ].quote )
 
       SocialButton({

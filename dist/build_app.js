@@ -21940,6 +21940,9 @@ ZlatanSays = {
       className: 'title',
       onClick: this._handleClick
     }, 'zlatan says'), DOM.div({
+      className: 'click',
+      onClick: this._handleClick
+    }, 'click for a quote'), DOM.div({
       className: 'quote'
     }, Quotes[this.state.quote].quote), SocialButton({
       buttonType: 'facebook',
