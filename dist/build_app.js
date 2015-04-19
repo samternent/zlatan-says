@@ -21857,13 +21857,13 @@ SocialButton = {
     if (this.props.redirect_uri) {
       url.push("&redirect_uri=" + (encodeURIComponent(this.props.redirect_uri)));
     }
-    url.join("");
-    url = "https://www.facebook.com/dialog/feed?app_id=139465912731425&display=popup" + url;
+    url = url.join('');
+    url = "https://www.facebook.com/dialog/feed?app_id=1465294663760971&display=popup" + url;
     return window.open(url, 650, 350, "facebook_share");
   },
   _handle_twitter: function() {
     var url;
-    url = "https://twitter.com/intent/tweet?text=" + (encodeURIComponent(this.props.title)) + "&url=" + this.props.link + "&hashtags=" + this.props.hashtags;
+    url = "https://twitter.com/intent/tweet?text=" + (encodeURIComponent(this.props.title.substring(0, 101))) + "...&url=" + this.props.link + "&hashtags=" + this.props.hashtags;
     return window.open(url, 650, 350, "twitter_share");
   },
   render: function() {
@@ -21871,7 +21871,7 @@ SocialButton = {
       onClick: this._handleClick,
       className: this.props.buttonType + " social-btn"
     }, DOM.i({
-      className: "icon--" + this.props.buttonType
+      className: "ion-social-" + this.props.buttonType
     }), this.props.buttonText ? DOM.span(null, this.props.buttonText) : void 0);
   }
 };
@@ -21937,16 +21937,17 @@ ZlatanSays = {
     }, DOM.div({
       className: 'question'
     }, Quotes[this.state.quote].question), DOM.h1({
+      className: 'title',
       onClick: this._handleClick
     }, 'zlatan says'), DOM.div({
       className: 'quote'
     }, Quotes[this.state.quote].quote), SocialButton({
       buttonType: 'facebook',
       buttonText: 'Share',
-      title: Quotes[this.state.quote].quote,
+      title: "" + Quotes[this.state.quote].quote,
       link: 'https://zlatan-says.herokuapp.com/',
-      caption: '',
-      picture: '',
+      caption: "" + Quotes[this.state.quote].question,
+      picture: 'http://localhost:3000/img/zlatan',
       redirect_uri: 'https://zlatan-says.herokuapp.com/'
     }), SocialButton({
       buttonType: 'twitter',
@@ -22018,4 +22019,4 @@ module.exports = new RenderUI();
 
 
 
-},{"./components/manifest.coffee":"/Users/samternent/Documents/projects/zlatan-says/src/javascripts/components/manifest.coffee","react":"/Users/samternent/Documents/projects/zlatan-says/node_modules/react/react.js"}]},{},["/Users/samternent/Documents/projects/zlatan-says/src/javascripts/components/manifest.coffee","/Users/samternent/Documents/projects/zlatan-says/src/javascripts/components/zlatan_says.coffee","/Users/samternent/Documents/projects/zlatan-says/src/javascripts/data/quotes.coffee","/Users/samternent/Documents/projects/zlatan-says/src/javascripts/render_ui.coffee"]);
+},{"./components/manifest.coffee":"/Users/samternent/Documents/projects/zlatan-says/src/javascripts/components/manifest.coffee","react":"/Users/samternent/Documents/projects/zlatan-says/node_modules/react/react.js"}]},{},["/Users/samternent/Documents/projects/zlatan-says/src/javascripts/components/manifest.coffee","/Users/samternent/Documents/projects/zlatan-says/src/javascripts/components/social_button.coffee","/Users/samternent/Documents/projects/zlatan-says/src/javascripts/components/zlatan_says.coffee","/Users/samternent/Documents/projects/zlatan-says/src/javascripts/data/quotes.coffee","/Users/samternent/Documents/projects/zlatan-says/src/javascripts/render_ui.coffee"]);

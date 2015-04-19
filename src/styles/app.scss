@@ -1,3 +1,130 @@
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
 body {
-  background-color: white;
+  background-color: #fecc00;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.1em;
+  font-size: 25px;
+}
+
+h1{
+    font-size: 4.236em;
+}
+
+h2{
+    font-size: 2.618em;
+}
+
+h3{
+    font-size: 1em;
+    line-height: 1.618em;
+    text-transform: uppercase;
+}
+
+p{
+    font-size: 1em;
+    line-height: 1.618em;
+}
+
+
+@media all and (max-width: 599px) and (min-width: 320px) {
+    body{
+        font-size: 14px;
+    }
+
+}
+
+
+.container {
+  max-width: 960px;
+  text-align: center;
+  margin: 0 auto;
+  }
+
+.title {
+  letter-spacing: -0.1em;
+  font-style: italic;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.question {
+  margin: 1em auto;
+  padding: 0 1em;
+  letter-spacing: -0.05em;
+  color: rgba(0,0,0,0.7);
+  font-style: italic;
+  font-size: 1.1em;
+  max-width: 700px;
+  background-color: #111;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(255,255,255,0.5) 0px 1px 1px;
+}
+.quote {
+  max-width: 700px;
+  font-size: 1.2em;
+  margin: 0.5em auto;
+  padding: 0 1.5em;
+  letter-spacing: 0.2em;
+  color: white;
+  font-style: italic;
+  background-color: #000;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(255,255,255,0.5) 0px 1px 1px;
+}
+.quote:before { content: '"'; }
+.quote:after { content: '"'; }
+
+.image {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 150px;
+  height: 200px;
+  background-image: url('/zlatan');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.social-btn {
+  cursor: pointer;
+  margin: 0 0.5em;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  i { margin: 0 0.25em; }
+
+  &.facebook {
+    color: #3b5998;
+    &:hover {
+      color: #333;
+    }
+  }
+  &.twitter {
+    color: #55acee;
+    &:hover {
+      color: #333;
+    }
+  }
 }

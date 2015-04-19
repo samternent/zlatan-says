@@ -86,16 +86,16 @@ ZlatanSays =
         },
       DOM.div({ className: 'question' }, Quotes[ @state.quote ].question )
 
-      DOM.h1({ onClick: @_handleClick }, 'zlatan says' )
+      DOM.h1({ className: 'title', onClick: @_handleClick }, 'zlatan says' )
       DOM.div({ className: 'quote' }, Quotes[ @state.quote ].quote )
 
       SocialButton({
         buttonType    : 'facebook'
         buttonText    : 'Share'
-        title         : Quotes[ @state.quote ].quote
+        title         : "#{Quotes[ @state.quote ].quote}"
         link          : 'https://zlatan-says.herokuapp.com/'
-        caption       : ''
-        picture       : ''
+        caption       : "#{Quotes[ @state.quote ].question}"
+        picture       : 'http://localhost:3000/img/zlatan'
         redirect_uri  : 'https://zlatan-says.herokuapp.com/'
       })
 

@@ -71,13 +71,13 @@ SocialButton =
     url.push "&caption=#{@props.caption}"                               if @props.caption
     url.push "&picture=#{encodeURIComponent(@props.picture)}"           if @props.picture
     url.push "&redirect_uri=#{encodeURIComponent(@props.redirect_uri)}" if @props.redirect_uri
-    url.join ""
+    url = url.join ''
 
-    url = "https://www.facebook.com/dialog/feed?app_id=139465912731425&display=popup#{url}"
+    url = "https://www.facebook.com/dialog/feed?app_id=1465294663760971&display=popup#{url}"
     window.open url, 650, 350, "facebook_share"
 
   _handle_twitter: ->
-    url = "https://twitter.com/intent/tweet?text=#{encodeURIComponent(@props.title)}&url=#{@props.link}&hashtags=#{@props.hashtags}"
+    url = "https://twitter.com/intent/tweet?text=#{encodeURIComponent(@props.title.substring(0,101))}...&url=#{@props.link}&hashtags=#{@props.hashtags}"
     window.open url, 650, 350, "twitter_share"
 
 
@@ -90,7 +90,7 @@ SocialButton =
       onClick       : @_handleClick
       className     : "#{ @props.buttonType } social-btn"
     },
-      DOM.i({ className: "icon--#{ @props.buttonType }" })
+      DOM.i({ className: "ion-social-#{ @props.buttonType }" })
       DOM.span(null, @props.buttonText ) if @props.buttonText
     )
 
