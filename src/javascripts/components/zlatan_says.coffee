@@ -61,6 +61,8 @@ ZlatanSays =
     if window.location.hash
       id = parseInt window.location.hash.substr(1);
       @setState quote: id if !isNaN(id)
+    else
+      @getQuote()
 
   componentWillReceiveProps: ->   # change state based on props change
   componentDidMount: ->           # data request (XHR)

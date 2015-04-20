@@ -74,11 +74,11 @@ SocialButton =
     url = url.join ''
 
     url = "https://www.facebook.com/dialog/feed?app_id=1465294663760971&display=popup#{url}"
-    window.open url, 650, 350, "facebook_share"
+    window.open url, "facebook", "menubar=1,resizable=1,width=650,height=350"
 
   _handle_twitter: ->
     url = "https://twitter.com/intent/tweet?text=#{encodeURIComponent(@props.title.substring(0,101))}...&url=#{@props.link}&hashtags=#{@props.hashtags}"
-    window.open url, 650, 350, "twitter_share"
+    window.open url, "twitter", "menubar=1,resizable=1,width=650,height=350"
 
 
   # --------------------------------------------
