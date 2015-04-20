@@ -96,7 +96,7 @@ ZlatanSays =
         title         : "#{Quotes[ @state.quote ].quote}"
         link          : 'https://zlatan-says.herokuapp.com/'
         caption       : "#{Quotes[ @state.quote ].question}"
-        picture       : 'http://localhost:3000/img/zlatan'
+        picture       : 'https://zlatan-says.herokuapp.com/img/zlatan_jpg.jpg'
         redirect_uri  : 'https://zlatan-says.herokuapp.com/'
       })
 

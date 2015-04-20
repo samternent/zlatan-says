@@ -13,8 +13,12 @@ app.get('/style', function(req, res) {
   res.sendfile("dist/build_app.css");
 });
 
-app.get('/img/zlatan', function(req, res) {
+app.get('/img/zlatan_sil', function(req, res) {
   res.sendfile("assets/img/zlatan.svg");
+});
+
+app.get('/img/zlatan_jpg.jpg', function(req, res) {
+  res.sendfile("assets/img/zlatan.jpg");
 });
 
 
