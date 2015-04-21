@@ -83,8 +83,7 @@ p{
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
-    color: transparent;
-    text-shadow: rgba(255,255,255,0.7) 0px 1px 1px;
+    color: #fff;
 }
 .quote {
   max-width: 700px;
@@ -98,8 +97,7 @@ p{
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
-    color: transparent;
-    text-shadow: rgba(255,255,255,0.7) 0px 1px 1px;
+    color: #fff;
 }
 .quote:before { content: '"'; }
 .quote:after { content: '"'; }
