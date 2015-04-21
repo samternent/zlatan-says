@@ -6,7 +6,7 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 body {
-  background-color: #fecc00;
+  background-color: #ffd400;
   font-family: 'Montserrat', sans-serif;
   letter-spacing: -0.1em;
   font-size: 25px;
@@ -50,6 +50,7 @@ p{
   letter-spacing: -0.1em;
   font-style: italic;
   cursor: pointer;
+  color: #004b87;
   -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -72,7 +73,7 @@ p{
 
 .question {
   margin: 1em auto;
-  padding: 0 1em;
+  padding: 10px 1em;
   letter-spacing: -0.05em;
   color: rgba(0,0,0,0.7);
   font-style: italic;
@@ -83,13 +84,13 @@ p{
     -moz-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: rgba(255,255,255,0.5) 0px 1px 1px;
+    text-shadow: rgba(255,255,255,0.7) 0px 1px 1px;
 }
 .quote {
   max-width: 700px;
   font-size: 1.2em;
   margin: 1em auto;
-  padding: 0 1.5em;
+  padding: 10px 1.5em;
   letter-spacing: 0.2em;
   color: white;
   font-style: italic;
@@ -98,7 +99,7 @@ p{
     -moz-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: rgba(255,255,255,0.5) 0px 1px 1px;
+    text-shadow: rgba(255,255,255,0.7) 0px 1px 1px;
 }
 .quote:before { content: '"'; }
 .quote:after { content: '"'; }
