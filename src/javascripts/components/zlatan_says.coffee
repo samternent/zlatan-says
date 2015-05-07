@@ -102,7 +102,7 @@ ZlatanSays =
       DOM.div({ className: 'click', onTouchEnd: @_handleClick }, 'click for a quote' )
       DOM.div({
         className: 'quote'
-        onTouchEnd: @_handleClick
+        onClick: @_handleClick
         },
         DOM.div({ className: 'image' })
 
