@@ -29,6 +29,7 @@ ZlatanSays =
   propTypes     : {
                   }
   mixins        : []
+  seen          : []
 
 
   # --------------------------------------------
@@ -37,18 +38,21 @@ ZlatanSays =
 
   getInitialState: ->
     quote       : 0
+    seen        : [ ]
 
   getDefaultProps: ->
 
 
   getQuote: ->
     rand = Math.floor(Math.random() * Quotes.length)
-    if @state and rand == @state.quote
-      @getQuote()
-    else
-      @setState quote: rand
+    @seen = [] if @seen.length > Quotes.length-1
+    return @getQuote() if @state and (rand == @state.quote or @seen.indexOf(rand) > -1)
+    @seen.push(rand)
 
-    window.location.hash = rand
+    @setState
+        quote : rand
+      , ->
+        window.location.hash = rand
 
   getQueryString: (name) ->
 
@@ -57,17 +61,21 @@ ZlatanSays =
   # --------------------------------------------
 
   componentWillMount: ->          # add event listeners (Flux Store, WebSocket, document)@
-    # I'm about to get the query string!
-    if window.location.hash
-      id = parseInt window.location.hash.substr(1);
-      @setState quote: id if !isNaN(id)
-    else
-      @getQuote()
+
 
   componentWillReceiveProps: ->   # change state based on props change
   componentDidMount: ->           # data request (XHR)
-  componentWillUnmount: ->        # remove event listeners
 
+  componentWillUnmount: ->        # remove event listeners
+    # I'm about to get the query string!
+    if window.location.hash
+      id = parseInt window.location.hash.substr(1);
+      if !isNaN(id)
+        @setState
+          quote : id
+          seen  : @state.seen.push(id)
+    else
+      @getQuote()
 
   # --------------------------------------------
   # Event handlers

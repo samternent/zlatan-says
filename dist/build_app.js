@@ -21898,41 +21898,48 @@ ZlatanSays = {
   displayName: 'ZlatanSays',
   propTypes: {},
   mixins: [],
+  seen: [],
   getInitialState: function() {
     return {
-      quote: 0
+      quote: 0,
+      seen: []
     };
   },
   getDefaultProps: function() {},
   getQuote: function() {
     var rand;
     rand = Math.floor(Math.random() * Quotes.length);
-    if (this.state && rand === this.state.quote) {
-      this.getQuote();
-    } else {
-      this.setState({
-        quote: rand
-      });
+    if (this.seen.length > Quotes.length - 1) {
+      this.seen = [];
     }
-    return window.location.hash = rand;
+    if (this.state && (rand === this.state.quote || this.seen.indexOf(rand) > -1)) {
+      return this.getQuote();
+    }
+    this.seen.push(rand);
+    return this.setState({
+      quote: rand
+    }, function() {
+      return window.location.hash = rand;
+    });
   },
   getQueryString: function(name) {},
-  componentWillMount: function() {
+  componentWillMount: function() {},
+  componentWillReceiveProps: function() {},
+  componentDidMount: function() {},
+  componentWillUnmount: function() {
     var id;
     if (window.location.hash) {
       id = parseInt(window.location.hash.substr(1));
       if (!isNaN(id)) {
         return this.setState({
-          quote: id
+          quote: id,
+          seen: this.state.seen.push(id)
         });
       }
     } else {
       return this.getQuote();
     }
   },
-  componentWillReceiveProps: function() {},
-  componentDidMount: function() {},
-  componentWillUnmount: function() {},
   _handleClick: function(e) {
     return this.getQuote();
   },
