@@ -98,11 +98,11 @@ ZlatanSays =
         },
       # DOM.div({ className: 'question' }, Quotes[ @state.quote ].question )
 
-      DOM.h1({ className: 'title', onClick: @_handleClick }, 'shit zlatan says' )
-      DOM.div({ className: 'click', onClick: @_handleClick }, 'click for a quote' )
+      DOM.h1({ className: 'title', onTouchStart: @_handleClick }, 'shit zlatan says' )
+      DOM.div({ className: 'click', onTouchStart: @_handleClick }, 'click for a quote' )
       DOM.div({
         className: 'quote'
-        onClick: @_handleClick
+        onTouchStart: @_handleClick
         },
         DOM.div({ className: 'image' })
 
