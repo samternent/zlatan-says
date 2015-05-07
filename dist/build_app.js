@@ -21884,15 +21884,19 @@ module.exports = React.createClass(SocialButton);
 
 
 },{"react":"/Users/samternent/Documents/projects/zlatan-says/node_modules/react/react.js","tbg_react_dom":"/Users/samternent/Documents/projects/zlatan-says/node_modules/tbg_react_dom/dist/index.js"}],"/Users/samternent/Documents/projects/zlatan-says/src/javascripts/components/zlatan_says.coffee":[function(require,module,exports){
-var DOM, Quotes, React, SocialButton, ZlatanSays;
+var DOM, Quotes, React, ReactCSSTransitionGroup, SocialButton, ZlatanSays;
 
-React = require('react');
+React = require('react/addons');
 
 DOM = require('tbg_react_dom');
 
 Quotes = require('../data/quotes.coffee');
 
+ReactCSSTransitionGroup = React.createFactory(React.addons.CSSTransitionGroup);
+
 SocialButton = React.createFactory(require('./social_button.coffee'));
+
+React.initializeTouchEvents(true);
 
 ZlatanSays = {
   displayName: 'ZlatanSays',
@@ -21901,8 +21905,7 @@ ZlatanSays = {
   seen: [],
   getInitialState: function() {
     return {
-      quote: 0,
-      seen: []
+      quote: 0
     };
   },
   getDefaultProps: function() {},
@@ -21917,7 +21920,8 @@ ZlatanSays = {
     }
     this.seen.push(rand);
     return this.setState({
-      quote: rand
+      quote: rand,
+      transition: true
     }, function() {
       return window.location.hash = rand;
     });
@@ -21930,9 +21934,9 @@ ZlatanSays = {
     if (window.location.hash) {
       id = parseInt(window.location.hash.substr(1));
       if (!isNaN(id)) {
+        this.seen.push(id);
         return this.setState({
-          quote: id,
-          seen: this.state.seen.push(id)
+          quote: id
         });
       }
     } else {
@@ -21953,14 +21957,19 @@ ZlatanSays = {
       className: 'click',
       onClick: this._handleClick
     }, 'click for a quote'), DOM.div({
-      className: 'quote'
+      className: 'quote',
+      onClick: this._handleClick
     }, DOM.div({
       className: 'image'
-    }), Quotes[this.state.quote].quote), SocialButton({
+    }), ReactCSSTransitionGroup({
+      transitionName: 'quote'
+    }, DOM.span({
+      key: "quote" + this.state.quote
+    }, Quotes[this.state.quote].quote))), SocialButton({
       buttonType: 'facebook',
       buttonText: 'Share',
       title: "" + Quotes[this.state.quote].quote,
-      link: 'https://zlatan-says.herokuapp.com/',
+      link: 'http://goo.gl/8b0WpB',
       caption: "" + Quotes[this.state.quote].question,
       picture: 'https://zlatan-says.herokuapp.com/img/zlatan_jpg.jpg',
       redirect_uri: 'https://zlatan-says.herokuapp.com/'
@@ -21968,8 +21977,8 @@ ZlatanSays = {
       buttonType: 'twitter',
       buttonText: 'Tweet',
       title: Quotes[this.state.quote].quote,
-      link: 'https://zlatan-says.herokuapp.com/',
-      hashtags: 'ZlatanSays'
+      link: 'http://goo.gl/8b0WpB',
+      hashtags: 'zlatansays'
     }), SocialButton({
       buttonType: 'github',
       link: 'https://github.com/samternent/zlatan-says'
@@ -21981,7 +21990,7 @@ module.exports = React.createClass(ZlatanSays);
 
 
 
-},{"../data/quotes.coffee":"/Users/samternent/Documents/projects/zlatan-says/src/javascripts/data/quotes.coffee","./social_button.coffee":"/Users/samternent/Documents/projects/zlatan-says/src/javascripts/components/social_button.coffee","react":"/Users/samternent/Documents/projects/zlatan-says/node_modules/react/react.js","tbg_react_dom":"/Users/samternent/Documents/projects/zlatan-says/node_modules/tbg_react_dom/dist/index.js"}],"/Users/samternent/Documents/projects/zlatan-says/src/javascripts/data/quotes.coffee":[function(require,module,exports){
+},{"../data/quotes.coffee":"/Users/samternent/Documents/projects/zlatan-says/src/javascripts/data/quotes.coffee","./social_button.coffee":"/Users/samternent/Documents/projects/zlatan-says/src/javascripts/components/social_button.coffee","react/addons":"/Users/samternent/Documents/projects/zlatan-says/node_modules/react/addons.js","tbg_react_dom":"/Users/samternent/Documents/projects/zlatan-says/node_modules/tbg_react_dom/dist/index.js"}],"/Users/samternent/Documents/projects/zlatan-says/src/javascripts/data/quotes.coffee":[function(require,module,exports){
 module.exports = [
   {
     question: 'On being marked by then Liverpool defender Stephane Henchoz',

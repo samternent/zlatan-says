@@ -110,7 +110,7 @@ p{
   padding: 2em;
   position: relative;
   padding: 0.5em 1.5em;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   color: #3B3B3B;
   font-style: italic;
   text-shadow: rgba(255,255,255,0.5) 0px 1px 1px;
@@ -166,4 +166,24 @@ p{
       color: #0f0f0f;
     }
   }
+}
+
+.quote-enter {
+  color: white;
+  transition: color .3s ease-in;
+}
+
+.quote-enter.quote-enter-active {
+  color: #3b3b3b;
+}
+
+.quote-leave {
+  color: #3b3b3b;
+  height: 0;position: absolute;
+  overflow: hidden;
+  transition: color 0.1s ease-in;
+}
+
+.quote-leave.quote-leave-active {
+  color: white;
 }

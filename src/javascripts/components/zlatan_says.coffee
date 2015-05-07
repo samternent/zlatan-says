@@ -1,5 +1,5 @@
 # React Globals
-React         = require('react')
+React         = require('react/addons')
 DOM           = require('tbg_react_dom')
 
 # Helpers
@@ -8,10 +8,12 @@ Quotes        = require('../data/quotes.coffee');
 # Mixins
 
 # Components
+ReactCSSTransitionGroup = React.createFactory(React.addons.CSSTransitionGroup);
 SocialButton  = React.createFactory(require('./social_button.coffee'))
 
 # Flux
 
+React.initializeTouchEvents(true)
 
 # Component
 #
@@ -38,7 +40,6 @@ ZlatanSays =
 
   getInitialState: ->
     quote       : 0
-    seen        : [ ]
 
   getDefaultProps: ->
 
@@ -50,7 +51,8 @@ ZlatanSays =
     @seen.push(rand)
 
     @setState
-        quote : rand
+        quote       : rand
+        transition  : true
       , ->
         window.location.hash = rand
 
@@ -68,9 +70,9 @@ ZlatanSays =
     if window.location.hash
       id = parseInt window.location.hash.substr(1);
       if !isNaN(id)
+        @seen.push(id)
         @setState
           quote : id
-          seen  : @state.seen.push(id)
     else
       @getQuote()
 
@@ -98,16 +100,24 @@ ZlatanSays =
 
       DOM.h1({ className: 'title', onClick: @_handleClick }, 'shit zlatan says' )
       DOM.div({ className: 'click', onClick: @_handleClick }, 'click for a quote' )
-      DOM.div({ className: 'quote' },
+      DOM.div({
+        className: 'quote'
+        onClick: @_handleClick
+        },
         DOM.div({ className: 'image' })
-        Quotes[ @state.quote ].quote
+
+        ReactCSSTransitionGroup({
+          transitionName: 'quote'
+        },
+          DOM.span({ key: "quote#{@state.quote}" }, Quotes[ @state.quote ].quote)
+        )
       )
 
       SocialButton({
         buttonType    : 'facebook'
         buttonText    : 'Share'
         title         : "#{Quotes[ @state.quote ].quote}"
-        link          : 'https://zlatan-says.herokuapp.com/'
+        link          : 'http://goo.gl/8b0WpB'
         caption       : "#{Quotes[ @state.quote ].question}"
         picture       : 'https://zlatan-says.herokuapp.com/img/zlatan_jpg.jpg'
         redirect_uri  : 'https://zlatan-says.herokuapp.com/'
@@ -117,8 +127,8 @@ ZlatanSays =
         buttonType    : 'twitter'
         buttonText    : 'Tweet'
         title         : Quotes[ @state.quote ].quote
-        link          : 'https://zlatan-says.herokuapp.com/'
-        hashtags      : 'ZlatanSays'
+        link          : 'http://goo.gl/8b0WpB'
+        hashtags      : 'zlatansays'
       })
 
       SocialButton({
