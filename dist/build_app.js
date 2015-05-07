@@ -21952,13 +21952,13 @@ ZlatanSays = {
       className: 'zlatan-says'
     }, DOM.h1({
       className: 'title',
-      onTouchStart: this._handleClick
+      onTouchEnd: this._handleClick
     }, 'shit zlatan says'), DOM.div({
       className: 'click',
-      onTouchStart: this._handleClick
+      onTouchEnd: this._handleClick
     }, 'click for a quote'), DOM.div({
       className: 'quote',
-      onTouchStart: this._handleClick
+      onTouchEnd: this._handleClick
     }, DOM.div({
       className: 'image'
     }), ReactCSSTransitionGroup({
