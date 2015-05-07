@@ -21925,8 +21925,7 @@ ZlatanSays = {
   getQueryString: function(name) {},
   componentWillMount: function() {},
   componentWillReceiveProps: function() {},
-  componentDidMount: function() {},
-  componentWillUnmount: function() {
+  componentDidMount: function() {
     var id;
     if (window.location.hash) {
       id = parseInt(window.location.hash.substr(1));
@@ -21940,6 +21939,7 @@ ZlatanSays = {
       return this.getQuote();
     }
   },
+  componentWillUnmount: function() {},
   _handleClick: function(e) {
     return this.getQuote();
   },

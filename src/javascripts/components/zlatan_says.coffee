@@ -65,9 +65,6 @@ ZlatanSays =
 
   componentWillReceiveProps: ->   # change state based on props change
   componentDidMount: ->           # data request (XHR)
-
-  componentWillUnmount: ->        # remove event listeners
-    # I'm about to get the query string!
     if window.location.hash
       id = parseInt window.location.hash.substr(1);
       if !isNaN(id)
@@ -76,6 +73,9 @@ ZlatanSays =
           seen  : @state.seen.push(id)
     else
       @getQuote()
+
+
+  componentWillUnmount: ->        # remove event listeners
 
   # --------------------------------------------
   # Event handlers
