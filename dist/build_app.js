@@ -21866,6 +21866,9 @@ SocialButton = {
     url = "https://twitter.com/intent/tweet?text=" + (encodeURIComponent(this.props.title.substring(0, 101))) + "...&url=" + this.props.link + "&hashtags=" + this.props.hashtags;
     return window.open(url, "twitter", "menubar=1,resizable=1,width=650,height=350");
   },
+  _handle_github: function() {
+    return window.location = this.props.link;
+  },
   render: function() {
     return DOM.a({
       onClick: this._handleClick,
@@ -21936,9 +21939,7 @@ ZlatanSays = {
   render: function() {
     return DOM.div({
       className: 'zlatan-says'
-    }, DOM.div({
-      className: 'question'
-    }, Quotes[this.state.quote].question), DOM.h1({
+    }, DOM.h1({
       className: 'title',
       onClick: this._handleClick
     }, 'zlatan says'), DOM.div({
@@ -21946,7 +21947,9 @@ ZlatanSays = {
       onClick: this._handleClick
     }, 'click for a quote'), DOM.div({
       className: 'quote'
-    }, Quotes[this.state.quote].quote), SocialButton({
+    }, DOM.div({
+      className: 'image'
+    }), Quotes[this.state.quote].quote), SocialButton({
       buttonType: 'facebook',
       buttonText: 'Share',
       title: "" + Quotes[this.state.quote].quote,
@@ -21960,6 +21963,9 @@ ZlatanSays = {
       title: Quotes[this.state.quote].quote,
       link: 'https://zlatan-says.herokuapp.com/',
       hashtags: 'ZlatanSays'
+    }), SocialButton({
+      buttonType: 'github',
+      link: 'https://github.com/samternent/zlatan-says'
     }));
   }
 };

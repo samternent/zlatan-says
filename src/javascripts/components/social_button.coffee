@@ -80,6 +80,8 @@ SocialButton =
     url = "https://twitter.com/intent/tweet?text=#{encodeURIComponent(@props.title.substring(0,101))}...&url=#{@props.link}&hashtags=#{@props.hashtags}"
     window.open url, "twitter", "menubar=1,resizable=1,width=650,height=350"
 
+  _handle_github:->
+    window.location = @props.link
 
   # --------------------------------------------
   # Render methods
