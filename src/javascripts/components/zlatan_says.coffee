@@ -100,12 +100,8 @@ ZlatanSays =
 
       DOM.h1({ className: 'title', onTouchEnd: @_handleClick }, 'shit zlatan says' )
       DOM.div({ className: 'click', onTouchEnd: @_handleClick }, 'click for a quote' )
-      DOM.div({
-        className: 'quote'
-        onClick: @_handleClick
-        },
+      DOM.div({ className: 'quote' },
         DOM.div({ className: 'image' })
-
         ReactCSSTransitionGroup({
           transitionName: 'quote'
         },

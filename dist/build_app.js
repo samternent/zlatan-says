@@ -21957,8 +21957,7 @@ ZlatanSays = {
       className: 'click',
       onTouchEnd: this._handleClick
     }, 'click for a quote'), DOM.div({
-      className: 'quote',
-      onTouchEnd: this._handleClick
+      className: 'quote'
     }, DOM.div({
       className: 'image'
     }), ReactCSSTransitionGroup({
