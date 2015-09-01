@@ -13,8 +13,6 @@ SocialButton  = React.createFactory(require('./social_button.coffee'))
 
 # Flux
 
-React.initializeTouchEvents(true)
-
 # Component
 #
 # @mixin
@@ -41,8 +39,6 @@ ZlatanSays =
   getInitialState: ->
     quote       : 0
 
-  getDefaultProps: ->
-
 
   getQuote: ->
     rand = Math.floor(Math.random() * Quotes.length)
@@ -62,22 +58,17 @@ ZlatanSays =
   # Lifecycle Methods
   # --------------------------------------------
 
-  componentWillMount: ->          # add event listeners (Flux Store, WebSocket, document)@
-
-
-  componentWillReceiveProps: ->   # change state based on props change
-  componentDidMount: ->           # data request (XHR)
+  componentWillMount: ->
+  componentWillReceiveProps: ->
+  componentDidMount: ->
     if window.location.hash
       id = parseInt window.location.hash.substr(1);
       if !isNaN(id)
         @seen.push(id)
-        @setState
-          quote : id
+        @setState quote : id
     else
       @getQuote()
 
-
-  componentWillUnmount: ->        # remove event listeners
 
   # --------------------------------------------
   # Event handlers
@@ -98,8 +89,8 @@ ZlatanSays =
         },
       # DOM.div({ className: 'question' }, Quotes[ @state.quote ].question )
 
-      DOM.h1({ className: 'title', onClick: @_handleClick ,onTouchEnd: @_handleClick }, 'shit zlatan says' )
-      DOM.div({ className: 'click', onClick: @_handleClick, onTouchEnd: @_handleClick }, 'click for a quote' )
+      DOM.h1({ className: 'title', onClick: @_handleClick }, 'shit zlatan says' )
+      DOM.div({ className: 'click', onClick: @_handleClick }, 'click for a quote' )
       DOM.div({ className: 'quote' },
         DOM.div({ className: 'image' })
         ReactCSSTransitionGroup({

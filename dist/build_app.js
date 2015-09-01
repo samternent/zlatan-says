@@ -21896,8 +21896,6 @@ ReactCSSTransitionGroup = React.createFactory(React.addons.CSSTransitionGroup);
 
 SocialButton = React.createFactory(require('./social_button.coffee'));
 
-React.initializeTouchEvents(true);
-
 ZlatanSays = {
   displayName: 'ZlatanSays',
   propTypes: {},
@@ -21908,7 +21906,6 @@ ZlatanSays = {
       quote: 0
     };
   },
-  getDefaultProps: function() {},
   getQuote: function() {
     var rand;
     rand = Math.floor(Math.random() * Quotes.length);
@@ -21943,7 +21940,6 @@ ZlatanSays = {
       return this.getQuote();
     }
   },
-  componentWillUnmount: function() {},
   _handleClick: function(e) {
     return this.getQuote();
   },
@@ -21952,12 +21948,10 @@ ZlatanSays = {
       className: 'zlatan-says'
     }, DOM.h1({
       className: 'title',
-      onClick: this._handleClick,
-      onTouchEnd: this._handleClick
+      onClick: this._handleClick
     }, 'shit zlatan says'), DOM.div({
       className: 'click',
-      onClick: this._handleClick,
-      onTouchEnd: this._handleClick
+      onClick: this._handleClick
     }, 'click for a quote'), DOM.div({
       className: 'quote'
     }, DOM.div({
